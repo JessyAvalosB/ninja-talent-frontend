@@ -2,14 +2,6 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "react-query";
 
-import {
-  EditUserAddAddress,
-  EditUserAddressContainer,
-  EditUserContainer,
-  EditUserFooterForm,
-  EditUserForm,
-} from "./Style";
-
 import Input from "../../components/Input/Input";
 import Loader from "../../components/Loader/Loader";
 import AddAddress from "../../components/AddAddress/AddAddress";
@@ -20,6 +12,13 @@ import { getUser, updateUser } from "../../fetchs/User";
 import { Address, User } from "../../interfaces/User/User";
 import { FormError } from "../../interfaces/Error/FormError";
 import { validateAddUser } from "../../helpers/validations/addUser.validation";
+import {
+  EditUserAddAddress,
+  EditUserAddressContainer,
+  EditUserContainer,
+  EditUserFooterForm,
+  EditUserForm,
+} from "./Style";
 
 const EditUser = () => {
   const { id } = useParams();

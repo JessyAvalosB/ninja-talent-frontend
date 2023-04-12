@@ -3,20 +3,24 @@ import { useEffect, useState } from "react";
 import Grid from "../../layouts/Grid/Grid";
 import Users from "../../components/Users/Users";
 import Loader from "../../components/Loader/Loader";
-
-import { useUsers } from "../../hooks/useUsers";
-import UserProvider from "../../providers/UserProvider/UserProvider";
 import AddUser from "../../components/AddUser/AddUser";
-import { ControlContainer } from "./Style";
+import UserProvider from "../../providers/UserProvider/UserProvider";
 import Button, { ButtonVariant } from "../../components/Button/Button";
+
+import { ControlContainer } from "./Style";
+import { useUsers } from "../../hooks/useUsers";
 
 const Home = () => {
   const [shouldShow, setShouldShow] = useState(false);
-  const { isLoading, data = [], error, refetch } = useUsers();
+  const { isLoading, data = [], refetch } = useUsers();
 
   useEffect(() => {
     refetch();
   }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -30,9 +34,7 @@ const Home = () => {
       </ControlContainer>
       <UserProvider>
         <Grid minWidth="220px">
-          {isLoading && <Loader />}
           <Users users={data} />
-          {error && <span>{error.message}</span>}
         </Grid>
       </UserProvider>
       <AddUser shouldShow={shouldShow} onClose={() => setShouldShow(false)} />

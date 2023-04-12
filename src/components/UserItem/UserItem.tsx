@@ -1,10 +1,8 @@
-import { useContext } from "react";
-
 import Icon from "../Icon/Icon";
 import WithUserContext from "../../HOC's/WithUserContext";
 
 import { UserActions, UserContainer, UserName } from "./Style";
-import { UserContextTypes, UserItemProps } from "../../interfaces/User/User";
+import { UserItemProps } from "../../interfaces/User/User";
 
 const UserItem = ({ user, context }: UserItemProps) => {
   const icons = {
